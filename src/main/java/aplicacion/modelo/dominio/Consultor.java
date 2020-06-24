@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
 
-public class asd {
+public class Consultor {
 
 }
