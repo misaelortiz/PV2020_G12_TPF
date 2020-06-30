@@ -6,8 +6,9 @@ package ar.edu.unju.fi.service;
 import ar.edu.unju.fi.model.UnidadHabitacional;
 
 /**
- * @author ArielG
- *
+ * Interfaz del Servicio Unidad Habitacional
+ * @author Grupo 12: ArielGM
+ * @version 1
  */
 public interface IUnidadHabitacionalService {
 	
