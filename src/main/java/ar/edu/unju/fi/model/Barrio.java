@@ -1,10 +1,13 @@
 package ar.edu.unju.fi.model;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Clase que modela el nombre del barrio donde vive la persona testeada
- * @author ArielG
+ * @author Grupo 12: ArielGM
  *
  */
+@Component
 public class Barrio {
 	
 	/**
