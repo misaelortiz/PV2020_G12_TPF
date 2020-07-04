@@ -1,7 +1,5 @@
 package ar.edu.unju.fi;
 
-
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
