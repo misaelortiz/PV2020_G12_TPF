@@ -1,2 +1,0 @@
-package aplicacion.modelo.dominio;
-
