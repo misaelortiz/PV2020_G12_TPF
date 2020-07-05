@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+</head>
+<body>
+	<div class="container">
+	
+		<div th:insert="layout/header :: header"></div>
+		
+		<div class="jumbotron">
+		  <h1 class="display-4">Programación Visual</h1>
+		  <p class="lead">Trabajo Final</p>
+		  <hr class="my-4">
+		  <p>Spring Boot</p>
+		  <p>Bootstrap</p>
+		  <p>MySQL</p>
+		  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+		</div>
+		
+		<div th:insert="layout/footer :: footer"></div>
+		
+	</div>
+</body>
+</html>
