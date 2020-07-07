@@ -1,5 +1,12 @@
 package ar.edu.unju.fi.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,11 +15,18 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
+@Entity
+@Table (name = "barrio")
 public class Barrio {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Column(name = "ID")
+		private Long id;
+
 	/**
 	 * Propiedad que indica el nombre del Barrio
 	 */
+	@Column(name = "Direccion")
 	private String nombre;
 	
 	

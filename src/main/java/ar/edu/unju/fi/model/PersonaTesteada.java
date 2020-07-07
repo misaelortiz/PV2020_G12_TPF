@@ -1,10 +1,22 @@
 package ar.edu.unju.fi.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class PersonaTesteada {
-		
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Column(name = "ID")
+		private Long id;
+	@Column(name = "DNI")
 		private String documento;
+	@Column(name = "Nombre")
 		private String nombre;
+	@Column(name = "Apellido")
 		private String apellido;
+	@Column(name = "Resultado")
 		private String resultadoTesteo;
 		
 		
