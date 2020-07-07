@@ -14,18 +14,18 @@ public class Usuario  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name = "ID")
 		private Long id;
-	@Column(name = "Usuario")
+	@Column(name = "Usuario", length = 150, nullable=true)
 		private String nombreUsuario;
-	@Column(name = "Contrase;a")
+	@Column(name = "Password", length = 150, nullable=true)
 		private String password;
-	@Column(name = "Nombre")
+	@Column(name = "Nombre", length = 150, nullable=true)
 		private String nombreReal;
-	@Column(name = "Apellido")
+	@Column(name = "Apellido", length = 150, nullable=true)
 		private String apellidoReal;
-	@Column(name = "Tipo")
+	@Column(name = "Tipo", length = 150, nullable=true)
 		private String tipoUsuario;
 		
-			
+		
 		//* Construtor por defecto *//
 		public Usuario() {
 			super();
