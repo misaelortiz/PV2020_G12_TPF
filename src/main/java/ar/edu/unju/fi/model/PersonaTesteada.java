@@ -10,13 +10,13 @@ public class PersonaTesteada {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name = "ID")
 		private Long id;
-	@Column(name = "DNI")
+	@Column(name = "DNI", length = 150, nullable=true)
 		private String documento;
-	@Column(name = "Nombre")
+	@Column(name = "Nombre", length = 150, nullable=true)
 		private String nombre;
-	@Column(name = "Apellido")
+	@Column(name = "Apellido", length = 150, nullable=true)
 		private String apellido;
-	@Column(name = "Resultado")
+	@Column(name = "Resultado", length = 150, nullable=true)
 		private String resultadoTesteo;
 		
 		
