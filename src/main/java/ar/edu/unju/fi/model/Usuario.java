@@ -1,14 +1,31 @@
 package ar.edu.unju.fi.model;
 
-public class Usuario {
-		
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table (name="usuario")
+public class Usuario  {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Column(name = "ID")
+		private Long id;
+	@Column(name = "Usuario")
 		private String nombreUsuario;
+	@Column(name = "Contrase;a")
 		private String password;
+	@Column(name = "Nombre")
 		private String nombreReal;
+	@Column(name = "Apellido")
 		private String apellidoReal;
+	@Column(name = "Tipo")
 		private String tipoUsuario;
 		
-		
+			
 		//* Construtor por defecto *//
 		public Usuario() {
 			super();
