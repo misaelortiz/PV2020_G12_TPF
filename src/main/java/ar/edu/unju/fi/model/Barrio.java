@@ -26,7 +26,7 @@ public class Barrio {
 	/**
 	 * Propiedad que indica el nombre del Barrio
 	 */
-	@Column(name = "Direccion")
+	@Column(name = "Direccion", length = 150, nullable=true)
 	private String nombre;
 	
 	
