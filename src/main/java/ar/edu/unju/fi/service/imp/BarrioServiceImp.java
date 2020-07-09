@@ -1,6 +1,7 @@
-package ar.edu.unju.fi.service;
+package ar.edu.unju.fi.service.imp;
 
 import ar.edu.unju.fi.model.Barrio;
+import ar.edu.unju.fi.service.IBarrioService;
 
 public class BarrioServiceImp implements IBarrioService {
 
