@@ -9,11 +9,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	String[] resources = new String[]{
-			"/include/","/css/","/icons/","/img/","/js/", "/layer/", "/webjars/**" };
+			"/include/**","/css/**","/icons/**","/img/**","/js/**", "/layer/**", "/webjars/**" };
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// TODO Auto-generated method stub
-		http.authorizeRequests()
+		// Aca se agrego permisos.
+		http.authorizeRequests()  
 		.antMatchers(resources).permitAll()
 		.antMatchers("/", "/home").permitAll()
 		.anyRequest().authenticated().and()
