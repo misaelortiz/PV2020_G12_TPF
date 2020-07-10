@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import ar.edu.unju.fi.service.imp.LoginServiceImp;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
@@ -36,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 		}
 	
-	BCryptPasswordEncoder bCryptPasswordEncoder;
+	/*BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -45,14 +47,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 	
 	@Autowired
-	LoginUsuarioServiceImp loginUsuarioServicesImp;
+	LoginServiceImp loginUsuarioServiceImp;
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception  {
-			auth.userDetailsService(loginUsuarioServicesImp).passwordEncoder(passwordEncoder());
+			auth.userDetailsService(loginUsuarioServiceImp).passwordEncoder(passwordEncoder());
 		
 	}
-	
+	*/
 	}
 
 
