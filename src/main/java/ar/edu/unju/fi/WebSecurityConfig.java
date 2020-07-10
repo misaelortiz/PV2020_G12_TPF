@@ -1,9 +1,13 @@
 package ar.edu.unju.fi;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -15,12 +19,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		// Aca se agrego permisos.
 		http.authorizeRequests()  
 		.antMatchers(resources).permitAll()
-		.antMatchers("/", "/home").permitAll()
+		.antMatchers("/", "/Home").permitAll()
 		.anyRequest().authenticated().and()
 		.formLogin()
 		.loginPage("/login")
 		.permitAll()
-		.defaultSuccessUrl("/formulario")
+		.defaultSuccessUrl("/Home")
 		.failureUrl("/login?error=true")
 		.usernameParameter("nombreUsuario")
 		.passwordParameter("password")
@@ -31,6 +35,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		
 	
 		}
+	
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+		return bCryptPasswordEncoder;
+	}
+	
+	@Autowired
+	LoginUsuarioServiceImp loginUsuarioServicesImp;
+	
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception  {
+			auth.userDetailsService(loginUsuarioServicesImp).passwordEncoder(passwordEncoder());
+		
+	}
+	
 	}
 
 
