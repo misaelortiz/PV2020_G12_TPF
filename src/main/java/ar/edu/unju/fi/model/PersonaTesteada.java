@@ -1,15 +1,18 @@
 package ar.edu.unju.fi.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Table;
+@Entity
+@Table (name="personatesteada")
 public class PersonaTesteada {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name = "ID")
-		private Long id;
+		private Long id_personaTesteada;
 	@Column(name = "DNI", length = 150, nullable=true)
 		private String documento;
 	@Column(name = "Nombre", length = 150, nullable=true)
@@ -20,6 +23,9 @@ public class PersonaTesteada {
 		private String resultadoTesteo;
 		
 		
+
+
+
 		public PersonaTesteada() {
 			super();
 		}
@@ -74,6 +80,14 @@ public class PersonaTesteada {
 		}
 		
 		
-		
+		public Long getId() {
+		return id_personaTesteada;
+	}
+
+
+	public void setId(Long id) {
+		this.id_personaTesteada = id;
+	}
 
 }
+

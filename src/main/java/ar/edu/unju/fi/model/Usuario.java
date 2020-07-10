@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table (name="usuario")
+@Component
 public class Usuario  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -25,7 +28,7 @@ public class Usuario  {
 	@Column(name = "Tipo", length = 150, nullable=true)
 		private String tipoUsuario;
 		
-		
+		 
 		//* Construtor por defecto *//
 		public Usuario() {
 			super();
@@ -70,6 +73,12 @@ public class Usuario  {
 		}
 		public void setTipoUsuario(String tipoUsuario) {
 			this.tipoUsuario = tipoUsuario;
+		}
+		public Long getId() {
+			return id;
+		}
+		public void setId(Long id) {
+			this.id = id;
 		}
 		
 		
