@@ -3,6 +3,8 @@
  */
 package ar.edu.unju.fi.service;
 
+import java.util.Optional;
+
 import ar.edu.unju.fi.model.UnidadHabitacional;
 
 /**
@@ -16,10 +18,10 @@ public interface IUnidadHabitacionalService {
 	
 	public UnidadHabitacional modificar(UnidadHabitacional unUsuario) throws Exception;
 	
-	public void eliminar(String domicilio);
+	public void eliminar(Long id);
 	
 	public Iterable<UnidadHabitacional> listarTodos();
 	
-	public UnidadHabitacional encontrarUsuario(String domicilio) throws Exception;
+	public Optional<UnidadHabitacional> encontrarUsuario(Long id) throws Exception;
 
 }
