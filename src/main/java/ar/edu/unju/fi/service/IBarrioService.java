@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.service;
 
+import java.util.Optional;
+
 import ar.edu.unju.fi.model.Barrio;
 
 /**
@@ -13,10 +15,10 @@ public interface IBarrioService {
 	
 	public Barrio modificar(Barrio unBarrio) throws Exception;
 	
-	public void eliminar(String nombre);
+	public void eliminar(Long id);
 	
 	public Iterable<Barrio> listarBarrios();
 	
-	public Barrio encontrarBarrio(String nombre) throws Exception;
+	public Optional<Barrio> encontrarBarrio(Long id) throws Exception;
 
 }
