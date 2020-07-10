@@ -18,7 +18,6 @@ public class UnidadHabitacionalServiceImp implements IUnidadHabitacionalService 
 	 * para el uso de sus metodos.
 	 * 
 	 */
-	
 	@Autowired
 
 	private IUnidadHabitacionalRepository iUnidadHabitacionalRepository;

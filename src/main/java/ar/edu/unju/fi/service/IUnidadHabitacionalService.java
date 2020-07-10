@@ -22,6 +22,6 @@ public interface IUnidadHabitacionalService {
 	
 	public Iterable<UnidadHabitacional> listarTodos();
 	
-	public Optional<UnidadHabitacional> encontrarUsuario(Long id) throws Exception;
+	public Optional<UnidadHabitacional>encontrarUsuario(Long id) throws Exception;
 
 }
