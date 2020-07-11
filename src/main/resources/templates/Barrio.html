@@ -1,10 +1,141 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf8">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Barrios</title>
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
+
+<div class="container">
+
+	<div th:insert="layout/header :: header"></div>
+		
+		<br>
+		<h3 class="text-center">Registros de Barrios</h3>
+		<br>		
+		<div class="row">	
+			<div class=" col-12 col-md-5">
+			<div class="card">
+				<div class="card-header">Registro de Barrio</div>
+				<div class="card-body" style="background: rgba(0,0,0,0.2)">		
+			<form>						
+
+			<div class="form-group row">
+				<label for="txtCodigo" class="col-3 col-form-label">Código</label>
+				<div class="col-9">
+				<input type="text" class="form-control" id="txtCodigo" placeholder="Código del barrio">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="txtNombre" class="col-3 col-form-label">Nombre</label>
+				<div class="col-9">
+				<input type="text" class="form-control" id="txtNombre" placeholder="Nombre del barrio">
+				</div>
+			</div>
+
+			<div class="form-group row justify-content-around">
+				<button type="reset" class="btn btn-primary col-3"><i class="fas fa-broom"></i>Limpiar</button>
+				<button type="button" class="btn btn-primary col-3">
+					Agregar
+				</button>
+			</div>					
+		</form>
+		</div>
+		</div><!--fi card-->
+			</div>
+			<br>
+		<div class="col-md-7">
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>					
+					<th scope="row">Código</th>
+					<th>Nombre</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td scope="row"></td>
+					<td>2222222</td>
+					<td>
+						<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+						<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#deleteModal">Del</button>
+					</td>					
+				</tr>
+				<tr>
+					<td scope="row"></td>
+					<td>2222222</td>				
+				</tr>
+				<tr>
+					<td scope="row"></td>
+					<td>2222222</td>				
+				</tr>
+			</tbody>
+		</table>		
+	</div>
+	</div>
+
+		<!-- Modal -->
+<div class="modal fade" id="editModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modificar Datos Personales</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+				<div class="form-group row">
+				<label for="txtCodigo" class="col-3 col-form-label col-form-label-sm">Código</label>
+				<div class="col-9">
+				<input type="text" class="form-control form-control-sm" id="txtCodigo" placeholder="Código del barrio">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="txtNombre" class="col-3 col-form-label col-form-label-sm">Nombre</label>
+				<div class="col-9">
+				<input type="text" class="form-control form-control-sm" id="txtNombre" placeholder="Nombre del barrio">
+				</div>
+			</div>		
+		</div>
+		<div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Confirmar Modificación</button>
+      </div>
+      </div>      
+    </div>
+  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" 
+aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ">      
+      <div class="modal-body " style="background: rgba(255,0,0,0.4)">
+				<div class="container-fluid">      	
+				<label for="direccio" class="col-12 text-center">¿Seguro desea eliminar al Barrio?</label>
+				<div class="col-8 offset-3 form-group">
+					<button type="button" class="btn btn-info btn-sm col-4" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-danger btn-sm col-4">Confirmar</button>
+				</div>
+				</div>
+      </div>      
+    </div>
+  </div>
+</div>
+
+	<div th:insert="layout/footer :: footer"></div>
+
+	</div>
+
+	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>		
+	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 </body>
 </html>
