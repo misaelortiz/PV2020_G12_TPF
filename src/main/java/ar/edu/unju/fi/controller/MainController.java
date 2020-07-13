@@ -13,10 +13,10 @@ public class MainController {
 //@Autowired
 		//private UsuarioServiceImp usuarioS;
 
-@RequestMapping ("/Login")
+@RequestMapping ("/login")
 public String main (Model model) {
 	
-	return "Login";
+	return "login";
 	
 }
 }
