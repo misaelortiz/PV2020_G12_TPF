@@ -6,7 +6,7 @@ import ar.edu.unju.fi.model.Barrio;
 
 /**
  * Interfaz del servicio Barrio
- * @author Grupo 12: ArielGM
+ * @author Grupo 12: 
  * @version 1
  */
 public interface IBarrioService {
@@ -19,6 +19,6 @@ public interface IBarrioService {
 	
 	public Iterable<Barrio> listarBarrios();
 	
-	public Optional<Barrio> encontrarBarrio(Long id) throws Exception;
+	public Barrio encontrarBarrio(Long id) throws Exception;
 
 }

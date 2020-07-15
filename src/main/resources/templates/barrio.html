@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Barrios</title>
@@ -16,36 +16,38 @@
 		<br>		
 		<div class="row">	
 			<div class=" col-12 col-md-5">
-			<div class="card">
+				<div class="card">
 				<div class="card-header">Registro de Barrio</div>
 				<div class="card-body" style="background: rgba(0,0,0,0.2)">		
-			<form>						
+					
+					<form id="formulario" role="form" method="post" th:object="${barrioForm}">					
+		
+					<div class="form-group row">
+						<label for="txtCodigo" class="col-3 col-form-label">Código</label>
+						<div class="col-9">
+						<input type="text" class="form-control" id="txtCodigo" placeholder="Código del barrio">
+						</div>
+					</div>
+		
+					<div class="form-group row">
+						<label for="txtNombre" class="col-3 col-form-label">Nombre</label>
+						<div class="col-9">
+						<input type="text" class="form-control" id="txtNombre" placeholder="Nombre del barrio"
+						th:field="${barrioForm.nombre}">
+						</div>
+					</div>
 
-			<div class="form-group row">
-				<label for="txtCodigo" class="col-3 col-form-label">Código</label>
-				<div class="col-9">
-				<input type="text" class="form-control" id="txtCodigo" placeholder="Código del barrio">
-				</div>
+					<div class="form-group row justify-content-around">
+						<button type="reset" class="btn btn-primary col-3"><i class="fas fa-broom"></i>Limpiar</button>
+						<button type="button" class="btn btn-primary col-3">
+							Agregar
+						</button>
+					</div>					
+				</form>
 			</div>
-
-			<div class="form-group row">
-				<label for="txtNombre" class="col-3 col-form-label">Nombre</label>
-				<div class="col-9">
-				<input type="text" class="form-control" id="txtNombre" placeholder="Nombre del barrio">
-				</div>
-			</div>
-
-			<div class="form-group row justify-content-around">
-				<button type="reset" class="btn btn-primary col-3"><i class="fas fa-broom"></i>Limpiar</button>
-				<button type="button" class="btn btn-primary col-3">
-					Agregar
-				</button>
-			</div>					
-		</form>
+			</div><!--fi card-->
 		</div>
-		</div><!--fi card-->
-			</div>
-			<br>
+		<br>
 		<div class="col-md-7">
 		
 		<table class="table table-striped">
@@ -57,22 +59,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td scope="row"></td>
-					<td>2222222</td>
+				<tr th:each="barrio : ${listaBarrios}">
+					<td scope="row" th:text="${barrio.id}"></td>
+					<td th:text="${barrio.nombre}"></td>
 					<td>
 						<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
 						<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#deleteModal">Del</button>
 					</td>					
-				</tr>
-				<tr>
-					<td scope="row"></td>
-					<td>2222222</td>				
-				</tr>
-				<tr>
-					<td scope="row"></td>
-					<td>2222222</td>				
-				</tr>
+				</tr>				
 			</tbody>
 		</table>		
 	</div>
@@ -104,7 +98,7 @@
 			</div>		
 		</div>
 		<div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" th:href="@{'/cancelar'}">Cancelar</button>
         <button type="button" class="btn btn-primary">Confirmar Modificación</button>
       </div>
       </div>      
@@ -128,14 +122,15 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true" >
     </div>
   </div>
 </div>
+		
 
 	<div th:insert="layout/footer :: footer"></div>
 
-	</div>
+</div>
 
-	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>		
-	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
-	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>		
+<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 </body>
 </html>
