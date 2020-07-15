@@ -21,14 +21,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		// Aca se agrego permisos.
 		http.authorizeRequests()  
 		.antMatchers(resources).permitAll()
-		.antMatchers("/", "/login").permitAll()
+		.antMatchers("/", "/home").permitAll()
 		.anyRequest().authenticated().and()
 		.formLogin()
 		.loginPage("/login")
 		.permitAll()
-		.defaultSuccessUrl("/login")
+		.defaultSuccessUrl("/home")
 		.failureUrl("/login?error=true")
-		.usernameParameter("nombreUsuario")
+		.usernameParameter("userName")
 		.passwordParameter("password")
 		.and()
 		.logout()
@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 		}
 	
-	/*BCryptPasswordEncoder bCryptPasswordEncoder;
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			auth.userDetailsService(loginUsuarioServiceImp).passwordEncoder(passwordEncoder());
 		
 	}
-	*/
+	
 	}
 
 

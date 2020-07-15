@@ -10,19 +10,22 @@
 </head>
 <body>
 	<div class="container-fluid bg">
+	<div th:insert="layout/header :: header"></div>
+	
 		<div class="row">
 			<div class="col-md-4 col-sm-8 col-xs-12"></div>
 			<div class="col-md-4 col-sm-8 col-xs-12">
-				<form class="form-contenedor">
+				<form class="form-contenedor" th:object="$(usuarioDelForm)" th:action="@(/login)" methot="post">
+				
 					<h2>Iniciar sesión</h2>
 				  <div class="form-group">
 				    <label for="usuario">Usuario</label>
-				    <input type="text" class="form-control" id="exampleInputUsuario" aria-describedby="usuarioHelp" placeholder="Usuario">
+				    <input type="text" class="form-control" id="exampleInputUsuario" aria-describedby="usuarioHelp" placeholder="Usuario" name="userName">
 				    <small id="emailHelp" class="form-text text-muted">Ingrese el nombre de usuario asignado</small>
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Contraseña</label>
-				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="password">
 				  </div>
 				  <div class="form-group form-check">
 				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
