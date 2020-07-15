@@ -6,7 +6,7 @@ import ar.edu.unju.fi.model.Usuario;
 
 public interface IUsuarioService {
 	void eliminarUsuario(Long id);
-	void agregarUsuario();
+	void agregarUsuario(Usuario usuario);
 	List<Usuario> listarUsuario();
 	
 	

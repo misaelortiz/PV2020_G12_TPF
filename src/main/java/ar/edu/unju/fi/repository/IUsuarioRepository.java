@@ -8,7 +8,7 @@ import ar.edu.unju.fi.model.Usuario;
 
 public interface  IUsuarioRepository extends JpaRepository<Usuario, Long> {
 	
-	public Optional<Usuario> findByUserName(String userName);
+	public Optional<Usuario> findBynombreUsuario(String userName);
 	
 		
 

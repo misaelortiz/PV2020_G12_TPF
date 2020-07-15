@@ -24,7 +24,7 @@ public class LoginServiceImp implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-			Usuario usuarioEncontrado = iUsuarioRepository.findByUserName(username).orElseThrow(()-> new UsernameNotFoundException("Login Invalido"));
+			Usuario usuarioEncontrado = iUsuarioRepository.findBynombreUsuario(username).orElseThrow(()-> new UsernameNotFoundException("Login Invalido"));
 			List<GrantedAuthority> tipos = new ArrayList<>();
 			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(usuarioEncontrado.getTipoUsuario());
 			tipos.add(grantedAuthority);
