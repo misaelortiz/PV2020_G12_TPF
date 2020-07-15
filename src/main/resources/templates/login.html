@@ -10,10 +10,13 @@
 </head>
 <body>
 	
-	<div class="container">
+	<div class="container-fluid bg">
 		<div th:insert="layout/header :: header"></div>
-		<form class="form" th:object="${usuarioDelForm}" th:action="@{/login}"
+		<div class="col-md-4 col-sm-8 col-xs-12"></div>
+			<div class="col-md-4 col-sm-8 col-xs-12">
+		<form class="form-contenedor" th:object="${usuarioDelForm}" th:action="@{/login}"
 			method="post">
+			<h2>Iniciar sesión</h2>
 			<div class="form-group">
 				<label for="userName">Nombre de Usuario</label> <input type="text" class="form-control"
 					id="userName" aria-describedby="nombreHelp" placeholder="Ingrese Nombre de Usuario"
@@ -28,15 +31,17 @@
 			<div class="alert-danger text-center"
 				th:if="${formLoginErrorMessage}" th:text="${formLoginErrorMessage}">Name
 				Error</div>
-		</form>
+		
 
 		<div th:if="${param.error}" class="alert alert-danger" role="alert">
-			Combinación Invalida de Usuario y Contraseña</div>
+			Combinación invalida de Usuario y Contraseña</div>
 		<div th:if="${param.logout}" class="alert alert-success" role="alert">
 			Ha salido del Sistema. Gracias!</div>
-
-		<div th:insert="layout/footer :: footer"></div>
-
+			</form>
+		<div class="col-md-4 col-sm-8 col-xs-12"></div>
+		
+	
 	</div>
 </body>
+<div th:insert="layout/footer :: footer"></div>
 </html>
