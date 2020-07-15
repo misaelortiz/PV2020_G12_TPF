@@ -14,11 +14,19 @@ import ar.edu.unju.fi.service.imp.LoginServiceImp;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+
+	@Autowired
+	private AutenticacionSuccessHandler autenticacion;
+	
+	
+	
+	
 	String[] resources = new String[]{
 			"/include/**","/css/**","/icons/**","/img/**","/js/**", "/layer/**", "/webjars/**" };
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// Aca se agrego permisos.
+		
 		http.authorizeRequests()  
 		.antMatchers(resources).permitAll()
 		.antMatchers("/", "/home").permitAll()
@@ -26,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.formLogin()
 		.loginPage("/login")
 		.permitAll()
-		.defaultSuccessUrl("/home")
+		.successHandler(autenticacion)
 		.failureUrl("/login?error=true")
 		.usernameParameter("userName")
 		.passwordParameter("password")
@@ -34,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.logout()
 		.permitAll()
 		.logoutSuccessUrl("/login?logout");
-		
+		http.csrf().disable();
 	
 		}
 	

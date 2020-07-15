@@ -40,8 +40,28 @@ public class UsuarioServiceImp implements IUsuarioService {
 
 	@Override
 	public List<Usuario> listarUsuario() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		
+		return iUsuarioRepository.findAll();
+	}
+
+	@Override
+	public Usuario modificarUsuario(Usuario usuario) throws Exception {
+		Usuario usuarioMod = encontrarUsuario(usuario.getId());
+		mapearUsuario(usuario,usuarioMod);
+		return iUsuarioRepository.save(usuarioMod);
+	}
+	public void mapearUsuario(Usuario desde, Usuario hacia) {
+        hacia.setNombreUsuario(desde.getNombreUsuario());
+        hacia.setNombreReal(desde.getNombreReal());
+        hacia.setApellidoReal(desde.getApellidoReal());
+        hacia.setTipoUsuario(desde.getTipoUsuario());
+  
+    }
+	@Override
+	public Usuario encontrarUsuario(Long id) throws Exception {
+		
+		return iUsuarioRepository.findById(id).orElseThrow(()-> new Exception("El Usuario no Existe"));
 	} 
 
 } 
