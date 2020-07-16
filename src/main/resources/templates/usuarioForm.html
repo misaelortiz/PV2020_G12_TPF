@@ -50,7 +50,7 @@
 									</div>
 
 									<div class="form-group row" th:if="${editMode==null or editMode==false}">
-										<label class="col-lg-3 col-form-label form-control-label">Contrasena</label>
+										<label class="col-lg-3 col-form-label form-control-label">Contraseña</label>
 										<div class="col-lg-9">
 											<input class="form-control" type="password"	th:field="${usuarioDelForm.password}">
 											<div class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>
@@ -73,7 +73,7 @@
 									</div>
 								</div>
 								<div class="form-group row" th:if="${editMode==null or editMode==false}">
-										<label class="col-lg-3 col-form-label form-control-label">Tipo de Usuario:</label>
+										<label class="col-lg-8 col-form-label form-control-label" >Tipo de Usuario:</label>
 										<div class="col-lg-9">
 											<div class="form-check">
 												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
@@ -98,9 +98,10 @@
 							</div>
 							<div class="form-group row">
 								<div class="col-lg-12 text-center">
-									<a class="btn btn-secondary" th:href="@{'/cancelar'}">Cancelar</a>
-									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregar">Guardar Usuario</button>
+									<a class="btn btn-sm btn-primary col-2" th:href="@{'/cancelar'}">Cancelar</a>
+									<button type="button" class="btn btn-sm btn-primary col-2" data-toggle="modal" data-target="#modalAgregar">Guardar Usuario</button>
 								</div>
+								
 							</div>
 							<div class="alert-danger text-center" th:if="${formUsuarioErrorMessage}" th:text="${formUsuarioErrorMessage}">Name Error</div>
 							
