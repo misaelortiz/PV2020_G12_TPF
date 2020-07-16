@@ -3,7 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
-</head>
+
+<!--  estos no tengo en el proyecto -->
+<link th:rel="stylesheet" th:href="@{/css/tempusdominus-bootstrap-4.min.css}"/>
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
+
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>		
+<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+<!--  estos no tengo en el proyecto -->
+<script th:src="@{/js/moment.min.js}"></script>		
+<script th:src="@{/js/tempusdominus-bootstrap-4.min.js}"></script>
+<link rel="stylesheet" type="text/css" href="css/estilos.css"></head>
 <body>
 	<div class="container">
 	
@@ -13,9 +25,22 @@
 		  <h1 class="display-4 text-center">Programación Visual</h1>
 		  <p class="lead text-center">Trabajo Final</p>
 		  <hr class="my-4">
-		  <p>Spring Boot</p>
-		  <p>Bootstrap</p>
-		  <p>MySQL</p>		  
+		  <div class="card text-center">
+			  <div class="card-header h3">
+			    App Web
+			  </div>
+			  <div class="card-body card-home">
+			    <h5 class="card-title font-weight-bolder texto-resaltado">TESTEO COVID-19</h5>
+			    <p class="card-text font-weight-bold texto-resaltado">Este sistema fue implementado con herramientas enseñadas por nuestros profesores a pesar de las circunstancias por la que atravesamos.</p>
+			    <img src="../img/spring-boot.png" alt="..." class="rounded-circle logos">
+			    <img src="../img/mysql.png" alt="..." class="rounded-pill logos">
+			    <img src="../img/bootstrap.png" alt="..." class="rounded-circle logos">
+			    <a href="/login" class="btn btn-primary">Empecemos! <i class="far fa-arrow-alt-circle-right"></i></a>
+			  </div>
+			  <div class="card-footer text-muted">
+			    Grupo 12 - Analista Programador Universitario
+			  </div>
+			</div>
 		</div>
 		
 		<div th:insert="layout/footer :: footer"></div>

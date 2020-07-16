@@ -1,30 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Registrador</title>
-<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+
+<!--  estos no tengo en el proyecto -->
+<link th:rel="stylesheet" th:href="@{/css/tempusdominus-bootstrap-4.min.css}"/>
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
+
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>		
+<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+<!--  estos no tengo en el proyecto -->
+<script th:src="@{/js/moment.min.js}"></script>		
+<script th:src="@{/js/tempusdominus-bootstrap-4.min.js}"></script>
+<link rel="stylesheet" type="text/css" href="css/estilos.css">
+
 </head>
-<body>
+<body class="bg">
 
 	<div class="container">
 
 	<div th:insert="layout/header :: header"></div>
 
 
-	<h3 class="text-center">Registros de Personas testeadas</h3>
+	<h3 class="text-center titulo-h3">Registros de Personas testeadas</h3>
 		<br>		
 		<div class="row">	
 			<div class="col-md-6 offset-md-3">
 			<div class="card">
-				<div class="card-header">Registro de testeo</div>
+				<div class="card-header text-center">Registro de testeo</div>
 				<div class="card-body">		
 			<form>						
 
 			<div class="form-group row">
 				<label for="direccio" class="col-sm-3 col-form-label">Dirección</label>
 				<div class="col-sm-9">
-				<input type="text" class="form-control" id="direccio" placeholder="Calle, Â°, Piso, Depto.">
+				<input type="text" class="form-control" id="direccio" placeholder="Calle, Bº, Piso, Depto.">
 				</div>
 			</div>
 
@@ -39,9 +54,9 @@
 			</div>
 
 			<div class="form-group row justify-content-around">
-				<button type="reset" class="btn btn-primary col-3"><i class="fas fa-broom"></i>Limpiar</button>
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-					Agregar Persona
+				<button type="reset" class="btn btn-danger col-3"><i class="fas fa-broom"></i>Limpiar</button>
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#staticBackdrop">
+					<i class="fas fa-save"></i> Agregar Persona
 				</button>
 			</div>					
 		</form>
@@ -98,26 +113,27 @@
 		</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Limpiar</button>
-        <button type="button" class="btn btn-primary">Agregar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-broom"></i> Limpiar</button>
+        <button type="button" class="btn btn-success"><i class="fas fa-save"></i> Agregar</button>
       </div>
     </div>
   </div>
 </div>
 
 		<br>
-		<table class="table table-striped">
-			<thead>
+		<section class="tabla">
+		<table class="table table-bordered table-hover">
+			<thead class="thead-dark">
 				<tr>
 					<th scope="row">DNI</th>
 					<th>Apellido</th>
-					<th>nombres</th>
+					<th>Nombres</th>
 					<th>Resultado</th>
 					<th>Dirección</th>
 					<th>Barrio</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="table-light">
 				<tr>
 					<td scope="row"></td>
 					<td>2222222</td>
@@ -143,12 +159,12 @@
 					<td>wrsdf</td>
 				</tr>
 			</tbody>
-		</table>		
+		</table>
+		</section>
+		<div th:insert="layout/footer :: footer"></div>
 	</div>
 
-	<div th:insert="layout/footer :: footer"></div>
 
-	</div>
 	
 </body>
 </html>

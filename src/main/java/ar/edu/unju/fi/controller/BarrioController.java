@@ -30,7 +30,7 @@ public class BarrioController {
 		return "usuarioForm";
 	}
 	
-	@PostMapping("/barrio")
+/*	@PostMapping("/barrio")
 	public String crearUsuario(@Valid @ModelAttribute("usuarioDelForm") Barrio barrio, BindingResult result,
 			ModelMap model) {
 		// agregado Valid (en el modelo tambien) y BindingResult
@@ -104,5 +104,5 @@ public class BarrioController {
 		}			
 		return cargarFormulario(model);
 	}
-
+*/
 }
