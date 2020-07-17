@@ -109,7 +109,6 @@
 		</dependency>
 	
 	</dependencies>
-	<!--  branch 'master' of https://github.com/misaelortiz/PV2020_G12_TPF.git -->
 
 	<build>
 		<plugins>
