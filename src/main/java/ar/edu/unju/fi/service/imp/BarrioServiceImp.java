@@ -1,7 +1,5 @@
 package ar.edu.unju.fi.service.imp;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,50 +20,41 @@ public class BarrioServiceImp implements IBarrioService {
 	 * Metodo para guardar un barrio
 	 * 
 	 */
-	
+
+	@Override
 	public void crear(Barrio unBarrio) {
 		iBarrioRepository.save(unBarrio);
-
+		
 	}
 
-	/**
-	 * 
-	 * 
-	 * 
-	 */
+	@Override
 	public Barrio modificar(Barrio unBarrio) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Barrio barrioMod = encontrarBarrio(unBarrio.getId());
+		mapearBarrio(unBarrio,barrioMod);
+		return iBarrioRepository.save(barrioMod);
 	}
 
-	/**
-	 * 
-	 * Metodo para eliminar un barrio
-	 * 
-	 */
+	@Override
 	public void eliminar(Long id) {
 		iBarrioRepository.deleteById(id);
-
+		
 	}
-	/**
-	 * 
-	 * Metodo para listar los barrios 
-	 * guardados
-	 * 
-	 */
+
+	@Override
 	public Iterable<Barrio> listarBarrios() {
 		
 		return iBarrioRepository.findAll();
 	}
 
-	/**
-	 * 
-	 * Metodo que encuentra un barrio por su ID.
-	 * 
-	 */
-	public Optional<Barrio> encontrarBarrio(Long id) throws Exception {
+	@Override
+	public Barrio encontrarBarrio(Long id) throws Exception {
 		
-		return iBarrioRepository.findById(id);
+		return iBarrioRepository.findById(id).orElseThrow(()-> new Exception("El Barrio no Existe"));
 	}
+	
+	public void mapearBarrio(Barrio desde, Barrio hacia) {
+        hacia.setNombre(desde.getNombre());
+       
+    }
 
 }

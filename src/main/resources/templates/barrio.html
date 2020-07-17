@@ -1,7 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+
+<!--  estos no tengo en el proyecto -->
+<link th:rel="stylesheet" th:href="@{/css/tempusdominus-bootstrap-4.min.css}"/>
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
+
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>		
+<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+<!--  estos no tengo en el proyecto -->
+<script th:src="@{/js/moment.min.js}"></script>		
+<script th:src="@{/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+<meta charset="utf-8">
 <title>Barrios</title>
 <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
@@ -20,29 +34,20 @@
 				<div class="card-header">Registro de Barrio</div>
 				<div class="card-body" style="background: rgba(0,0,0,0.2)">		
 					
-					<form id="formulario" role="form" method="post" th:object="${barrioForm}">					
-		
-					<div class="form-group row">
-						<label for="txtCodigo" class="col-3 col-form-label">Código</label>
-						<div class="col-9">
-						<input type="text" class="form-control" id="txtCodigo" placeholder="Código del barrio">
-						</div>
-					</div>
+					<form id="formulario" role="form" method="post" th:object="${barrioDelForm}" th:action="${editMode}?@{/editarBarrio}:@{/barrio}">					
 		
 					<div class="form-group row">
 						<label for="txtNombre" class="col-3 col-form-label">Nombre</label>
 						<div class="col-9">
 						<input type="text" class="form-control" id="txtNombre" placeholder="Nombre del barrio"
-						th:field="${barrioForm.nombre}">
+						th:field="${barrioDelForm.nombre}">
 						</div>
 					</div>
 
 					<div class="form-group row justify-content-around">
 						<button type="reset" class="btn btn-primary col-3"><i class="fas fa-broom"></i>Limpiar</button>
-						<button type="button" class="btn btn-primary col-3">
-							Agregar
-						</button>
-					</div>					
+						<input type="submit" class="btn btn-primary col-3" value="Save Changes"  th:value="${editMode}?'Guardar Barrio':'Agregar'">
+							</div>					
 				</form>
 			</div>
 			</div><!--fi card-->
@@ -50,87 +55,64 @@
 		<br>
 		<div class="col-md-7">
 		
-		<table class="table table-striped">
+		<table class="table table-bordered table-hover table-striped">
 			<thead>
 				<tr>					
-					<th scope="row">Código</th>
-					<th>Nombre</th>
-					<th></th>
+					<th scope="col">ID</th>
+					<th scope="col">Nombre</th>
+					<th scope="col"></th>
+				
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="barrio : ${listaBarrios}">
-					<td scope="row" th:text="${barrio.id}"></td>
+					<td th:text="${barrio.id}"></td>
 					<td th:text="${barrio.nombre}"></td>
-					<td>
-						<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
-						<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#deleteModal">Del</button>
-					</td>					
-				</tr>				
-			</tbody>
-		</table>		
+					<td><a href="#" th:href="@{'/editarBarrio/'+${barrio.id}}">
+                     <i class="fa fa-edit"></i></a> | 
+                      <a href="#" th:onclick="'javascript:confirmarEliminar(''+${barrio.id}+'');'"><i class="fa fa-trash-alt"></i>
+                      </a></td>
+               
+		</table>
+	
 	</div>
 	</div>
+	<!-- Modal Eliminar -->
+							<div class="modal fade" id="modalEliminar" tabindex="-1"	role="dialog" aria-labelledby="eliminarModalTitulo"	aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="eliminarModalTitulo">Confirmar Eliminar</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body"><h6>Esta seguro que desea borrar este barrio?</h6></div>
+										<input type="hidden" id="identificadorBarrioHiddenInput" name="userIdHiddenInput"/>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"	data-dismiss="modal">Cerrar</button>
+											<button type="button" class="btn btn-primary" th:onclick="eliminarBarrio()">Borrar Barrio</button>
+										</div>
+									</div>
+								</div>
+							</div>
 
-		<!-- Modal -->
-<div class="modal fade" id="editModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modificar Datos Personales</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-				<div class="form-group row">
-				<label for="txtCodigo" class="col-3 col-form-label col-form-label-sm">Código</label>
-				<div class="col-9">
-				<input type="text" class="form-control form-control-sm" id="txtCodigo" placeholder="Código del barrio">
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label for="txtNombre" class="col-3 col-form-label col-form-label-sm">Nombre</label>
-				<div class="col-9">
-				<input type="text" class="form-control form-control-sm" id="txtNombre" placeholder="Nombre del barrio">
-				</div>
-			</div>		
-		</div>
-		<div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" th:href="@{'/cancelar'}">Cancelar</button>
-        <button type="button" class="btn btn-primary">Confirmar Modificación</button>
-      </div>
-      </div>      
-    </div>
-  </div>
-
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" 
-aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content ">      
-      <div class="modal-body " style="background: rgba(255,0,0,0.4)">
-				<div class="container-fluid">      	
-				<label for="direccio" class="col-12 text-center">¿Seguro desea eliminar al Barrio?</label>
-				<div class="col-8 offset-3 form-group">
-					<button type="button" class="btn btn-info btn-sm col-4" data-dismiss="modal">Cancelar</button>
-					<button type="button" class="btn btn-danger btn-sm col-4">Confirmar</button>
-				</div>
-				</div>
-      </div>      
-    </div>
-  </div>
-</div>
 		
 
 	<div th:insert="layout/footer :: footer"></div>
 
 </div>
+		<script type="text/javascript">
+		function confirmarEliminar(id){
+  	  $('#modalEliminar').modal('show');
+  	  $("#identificadorBarrioHiddenInput").val(id);
+		}
 
-<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>		
-<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
-<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		function eliminarBarrio(){
+    	var id = $("#identificadorBarrioHiddenInput").val();
+   		 window.location = "eliminarBarrio/"+id;
+		}
+	</script>
 
 </body>
 </html>
