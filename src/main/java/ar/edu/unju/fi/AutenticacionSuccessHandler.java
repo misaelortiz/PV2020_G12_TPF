@@ -29,16 +29,18 @@ public class AutenticacionSuccessHandler implements AuthenticationSuccessHandler
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
 		for (GrantedAuthority ga : authorities) {
-			if (ga.getAuthority().equals("CONSULTOR")) {
+			if (ga.getAuthority().equals("consultor")) {
 
 				consultor = true;
 				break;
-			} else {
-				if (ga.getAuthority().equals("REGISTRADOR")) {
+			} 
+			else {
+				if (ga.getAuthority().equals("registrador")) {
 
 					registrador = true;
 					break;
-				} else {
+				} 
+				else {
 
 					bd = true;
 					break;
