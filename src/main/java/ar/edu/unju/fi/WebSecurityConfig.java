@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.successHandler(autenticacion)
 		.failureUrl("/login?error=true")
 		.usernameParameter("userName")
-		.passwordParameter("password")
+		.passwordParameter("password") 
 		.and()
 		.logout()
 		.permitAll()
